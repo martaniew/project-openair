@@ -346,7 +346,7 @@ searchresultmap {
   
   .search {
     margin-top: 10em;
-    position: static;
+    position: fixed;
     z-index: 10;
     
   }
