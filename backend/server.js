@@ -27,9 +27,7 @@ app.enable('trust proxy');
 
 // Impement CORS 
 
-app.use(cors({
-  origin: 'https://apenairapp.herokuapp.com'
-})); 
+app.use(cors()); 
 
 app.options('*', cors())
 
