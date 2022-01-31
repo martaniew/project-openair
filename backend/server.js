@@ -20,17 +20,17 @@ connectDB()
 
 const app = express()
 
-
+app.enable('trust proxy'); 
 
 // Set security HTTP headers
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
       "default-src": ["'self'"],
-      "connect-src": ["'self'", "'unsafe-inline'", 'https://maps.googleapis.com' ],
+      "connect-src": ["'self'", 'https://maps.googleapis.com' ],
       "img-src": ["'self'", "data:", 'https://maps.gstatic.com', 'https://maps.googleapis.com/'],
-      "style-src-elem": ["'self'", "data:",  'https://fonts.googleapis.com', "'unsafe-inline'", 'https://cdnjs.cloudflare.com/', 'https://maps.googleapis.com' ],
-      "script-src": ["'unsafe-inline'", "'self'",  'https://apis.google.com', 'https://maps.googleapis.com', 'https://unpkg.com', 'https://cdnjs.cloudflare.com/'],
+      "style-src-elem": ["'self'", "data:",  'https://fonts.googleapis.com', 'https://cdnjs.cloudflare.com/', 'https://maps.googleapis.com', "'sha256-mmA4m52ZWPKWAzDvKQbF7Qhx9VHCZ2pcEdC0f9Xn/Po='"],
+      "script-src": [ "'self'",  'https://apis.google.com', 'https://maps.googleapis.com', 'https://unpkg.com', 'https://cdnjs.cloudflare.com/'],
       "object-src": ["'none'"],
     },
   })
