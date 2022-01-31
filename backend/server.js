@@ -3,6 +3,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import morgan from 'morgan'
+import cors from 'cors'
 import rateLimit from 'express-rate-limit'
 import helmet from 'helmet'
 import cookies from 'cookie-parser'
@@ -14,6 +15,7 @@ import activityRoutes from './routes/activityRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 
+
 dotenv.config()
 
 connectDB()
@@ -21,6 +23,15 @@ connectDB()
 const app = express()
 
 app.enable('trust proxy'); 
+
+
+// Impement CORS 
+
+app.use(cors({
+  origin: 'https://apenairapp.herokuapp.com'
+})); 
+
+app.options('*', cors())
 
 // Set security HTTP headers
 
