@@ -373,8 +373,8 @@ z-index: 0;
 
 .searchresultmap {
  
-  margin: 0 auto; 
-  
+  display: flex;
+  justify-content: center;
 }
 
 
