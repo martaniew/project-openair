@@ -30,7 +30,7 @@ app.use(
       "connect-src": ["'self'", 'https://maps.googleapis.com' ],
       "img-src": ["'self'", "data:", 'https://maps.gstatic.com', 'https://maps.googleapis.com/'],
       "style-src-elem": ["'self'", "data:",  'https://fonts.googleapis.com', 'https://cdnjs.cloudflare.com/', 'https://maps.googleapis.com', "'sha256-mmA4m52ZWPKWAzDvKQbF7Qhx9VHCZ2pcEdC0f9Xn/Po='"],
-      "script-src": [ "'self'",  'https://apis.google.com', 'https://maps.googleapis.com', 'https://unpkg.com', 'https://cdnjs.cloudflare.com/'],
+      "script-src": [ "'self'", "'sha256-1kri9uKG6Gd9VbixGzyFE/kaQIHihYFdxFKKhgz3b80='",  'https://apis.google.com', 'https://maps.googleapis.com', 'https://unpkg.com', 'https://cdnjs.cloudflare.com/'],
       "object-src": ["'none'"],
     },
   })
