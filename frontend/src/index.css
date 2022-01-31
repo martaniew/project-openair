@@ -1,5 +1,6 @@
 main {
   min-height: 80vh;
+  margin: 0; 
 }
 
 h3 {
@@ -15,10 +16,24 @@ h2 {
   font-size: 1.4rem;
   padding: 0.5rem 0;
 }
+header {
+  margin: 0;
+  width: 100vw;
+  z-index: 10;
+  position: sticky;
+}
 
 .rating span {
   margin: 0.1rem;
 }
+
+/* footer */
+
+footer{
+  margin-bottom: 5%;
+}
+
+
 
 /* home page */
 
@@ -37,7 +52,48 @@ background-image: url(./assets/voleyball.jpg);
 background-size: cover;
 margin: 0;
 position: absolute;
+z-index: 0;
 }
+
+
+
+.header {
+  margin-top: 30em;
+}
+
+.hptitle {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-right: 15%;
+  justify-content: center;
+  align-items: center; 
+}
+
+.hptitle p  {
+  color: #fff;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.7); 
+  border-radius: 4px;
+  padding: 2%;
+ 
+}
+.hptitle h2  {
+  color: #fff;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.7); 
+  border-radius: 4px;
+  padding: 2%;
+ 
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  
+}
+
 
 .firstsearchdinput, .seconsearchdinput  {
   padding: 20px 20px;
@@ -66,11 +122,6 @@ position: absolute;
 
 }
 
-.search {
-  display: flex;
-  justify-content: center;
-  margin-top: 45em;
-}
 
 .searchform {
   width: 80%;
@@ -121,12 +172,15 @@ position: absolute;
   flex-direction: row;
   justify-content: center;
 }
+searchresultmap {
+  height: 200px; 
+  width: 70% ; 
+}
 
 .thumbnaillist {
   max-width: 30%;
   margin: 20px;
 }
-
 
 .contact {
   display: flex;
@@ -250,6 +304,7 @@ position: absolute;
     flex-direction: column;
     align-items: center;
   }
+
   .firstsearchdinput, .searchbutton
   {
     border-radius: 0; 
@@ -257,8 +312,20 @@ position: absolute;
   .seconsearchdinput {
     margin-left: 0;
     margin-bottom: 5%;
-
   }
+
+  .header {
+    margin-top: 10em;
+  }
+
+
+  .hptitle {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    justify-content: center;}
+ 
+  
 
   .vl {
     height: 0;
@@ -277,8 +344,8 @@ position: absolute;
 
   }
   
-  .searchresults {
-    margin-top: 10px;
+  .search {
+    margin-top: 10em;
     position: static;
     z-index: 10;
     
@@ -301,6 +368,21 @@ position: absolute;
   position: static;
   margin: 20px;
 }
+
+.searchresults input, .searchresults button{
+  border: 1px solid grey; 
+}
+
+.searchresults {
+  background-color: #fff;
+}
+
+searchresultmap {
+  height: 10em; 
+  width:  100vw; 
+  margin: 10px;
+}
+
 
 }
 

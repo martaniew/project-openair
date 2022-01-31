@@ -29,23 +29,18 @@ const HomeScreen = ({ match }) => {
   return (
     <>
     <Meta />
-    <div className='background'>
-
-      <div className='search' >
-
-    <Route render={({ history }) => <Search history={history} />} />
-
-    </div>
- 
-
-
-
-
-
-
-
-              
+    
+  <div className='background'>
+      <div className='header'>
+        <div className='hptitle'>
+          <h2>Trouvez des activités sportives près de chez vous </h2>
+          <p>Faitez du sport en groupe, gratuitement et en plein air</p>
         </div>
+        <div className='search' >
+          <Route render={({ history }) => <Search history={history} />} />
+        </div>
+    </div>
+  </div>
         </>
   
   )

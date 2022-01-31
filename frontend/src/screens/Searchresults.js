@@ -105,11 +105,11 @@ const Searchresults = ({location, match, history}) => {
                 <Col>
                 <Route render={({ history }) => <Search history={history} />} />
                 </Col>
-            </Row>
+          </Row>
 
             <Row>
                 <Col>
-                <div style={{  height: '200px', width: '100%'  }}>
+                <div className='searchresultmap' >
             <GoogleMapReact
             defaultZoom={defaultProps.zoom}
             defaultCenter={defaultProps.center}

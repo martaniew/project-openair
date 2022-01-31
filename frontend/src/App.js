@@ -21,10 +21,10 @@ import ActivityCreateScreen from "./screens/ActivityCreateScreen";
 const App = () => {
   return (
     <Router>
-      <Route path="/" component={HomeScreen} exact />
       <Header />
-      <main className="py-3">
-        <Container>
+      <main>
+      <Route path="/" component={HomeScreen} exact />
+        <Container className="py-3">
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
           <Route path="/profile" component={ProfileScreen} />
