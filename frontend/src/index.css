@@ -315,7 +315,7 @@ searchresultmap {
   }
 
   .header {
-    margin-top: 10em;
+    margin-top: 5em;
   }
 
 
@@ -345,7 +345,7 @@ searchresultmap {
   }
   
   .search {
-    margin-top: 10em;
+    margin-top: 5em;
     z-index: 10;
     
   }
