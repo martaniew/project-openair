@@ -27,6 +27,18 @@ app.enable('trust proxy');
 
 // Impement CORS 
 
+// 1) GLOBAL MIDDLEWARES
+// Implement CORS
+app.use(cors());
+// Access-Control-Allow-Origin *
+// api.natours.com, front-end natours.com
+// app.use(cors({
+//   origin: 'https://www.natours.com'
+// }))
+
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
+
 //app.use(cors({
  // origin: 'https://apenairapp.herokuapp.com'
 //})); 
@@ -35,7 +47,7 @@ app.enable('trust proxy');
 
 // Set security HTTP headers
 
-//app.use(helmet()); 
+app.use(helmet()); 
 
 app.use(
   helmet
