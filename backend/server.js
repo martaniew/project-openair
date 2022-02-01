@@ -27,11 +27,7 @@ app.enable('trust proxy');
 
 // Impement CORS 
 
-// 1) GLOBAL MIDDLEWARES
-// Implement CORS
-//app.use(cors());
-// Access-Control-Allow-Origin *
-// api.natours.com, front-end natours.com
+
 app.use(cors({
    origin: 'https://apenairapp.herokuapp.com'
 }))
@@ -39,11 +35,6 @@ app.use(cors({
 app.options('*', cors());
 // app.options('/api/v1/tours/:id', cors());
 
-//app.use(cors({
- // origin: 'https://apenairapp.herokuapp.com'
-//})); 
-
-//app.options('*', cors())
 
 // Set security HTTP headers
 
@@ -57,7 +48,7 @@ app.use(
       "connect-src": ["'self'", 'https://maps.googleapis.com' ],
       "img-src": ["'self'", "data:", 'https://maps.gstatic.com', 'https://maps.googleapis.com/'],
       "style-src-elem": ["'self'",  'https://fonts.googleapis.com', 'https://cdnjs.cloudflare.com/', 'https://maps.googleapis.com', "'sha256-mmA4m52ZWPKWAzDvKQbF7Qhx9VHCZ2pcEdC0f9Xn/Po='", "'sha256-/VVOq+Ws/EiUxf2CU6tsqsHdOWqBgHSgwBPqCTjYD3U='", "'sha256-lqO9GtizDrXbeRXIR3ynpmU+gCyvU40G2GmqvrAGxBk='", "'sha256-g9aHNH7iF2hhGZYtVVd5mKQSnyLPmXWw5gwiuxBVonI='", "'sha256-EmpgQBYw6JFHxarOZhE2iFtBzBewJeLNUVVHfvN3Obw='", "'sha256-6EhLFF8G95u/ybGSFfUDwCI+tUnGaFOU7YO6RWksdT8='"],
-      "script-src": [ "'self'", "'sha256-1kri9uKG6Gd9VbixGzyFE/kaQIHihYFdxFKKhgz3b80='",  'https://apis.google.com', 'https://maps.googleapis.com', 'https://unpkg.com', 'https://cdnjs.cloudflare.com/'],
+      "script-src": [ "'self'", "'sha256-1kri9uKG6Gd9VbixGzyFE/kaQIHihYFdxFKKhgz3b80='"],
       "object-src": ["'none'"],
     },
   })
