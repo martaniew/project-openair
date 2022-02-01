@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { listProducts } from '../actions/productActions'
+import { listProducts, listTopProducts } from '../actions/productActions'
 import { Route } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
@@ -45,6 +45,7 @@ const Searchresults = ({location, match, history}) => {
 
     useEffect(() => {
         dispatch(listProducts(searchParameters, pageNumber))
+        dispatch(listTopProducts())
       }, [name, description, dispatch, pageNumber])
 
 
