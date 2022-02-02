@@ -54,6 +54,8 @@ app.use(
   })
 );
 
+app.use(helmet.cacheControl()); 
+
 
 
 // Developement loging 
