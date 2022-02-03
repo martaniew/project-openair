@@ -1,6 +1,6 @@
 const setCache =  (req, res, next) => {
    
-      res.set('Cache-control', `no-store`)
+    res.setHeader('Cache-Control', 'no-cache')
    
     next()
   }
