@@ -54,7 +54,7 @@ app.use(
   })
 );
 
-app.use(helmet.noCache())
+app.use(setCache)
 
 
 
