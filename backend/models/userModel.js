@@ -33,11 +33,9 @@ const userSchema = mongoose.Schema(
   }
 )
 
-
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
-
 
 // with pre hook enrcyption will be possible between receiving data and saving them to database   
 userSchema.pre('save', async function (next) {

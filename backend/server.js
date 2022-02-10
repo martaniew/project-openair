@@ -55,10 +55,6 @@ app.use(
   })
 );
 
-app.use(setCache)
-
-
-
 
 // Developement loging 
 if (process.env.NODE_ENV === 'development') {
