@@ -3,7 +3,6 @@
 > Application built with the MERN stack & Redux.
 
 
-
 ### Env Variables
 
 To run application create a .env file in then root and add the following
