@@ -1,6 +1,9 @@
 import React from "react";
 import {Card} from 'react-bootstrap'
 import Activity from "./Activity";
+
+//displaing thumbnail on map 
+
 const InfoWindow = (props) => {
     const { activity } = props;
     const infoWindowStyle = {

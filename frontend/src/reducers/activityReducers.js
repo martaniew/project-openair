@@ -29,6 +29,8 @@ import {
   ACTIVITY_LIST_MY_RESET
 } from '../constants/activityConstants'
 
+
+
 export const activityListReducer = (state = { activities: [] }, action) => {
   switch (action.type) {
     case ACTIVITY_LIST_REQUEST:

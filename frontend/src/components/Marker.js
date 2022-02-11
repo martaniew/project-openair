@@ -1,17 +1,17 @@
 import React from "react";
 import InfoWindow from "./InfoWindow";
 
+//displaying map marker
 const Marker = (props) => {
+  let show = props.activity.show;
 
- let show = props.activity.show
- 
   const markerStyle = {
-    border: '1px solid white',
-    borderRadius: '50%',
-    height: props.enlarged ?  20 : 10,
-    width: props.enlarged ?  20 : 10,
-    backgroundColor: show ? 'red' : 'blue',
-    cursor: 'pointer',
+    border: "1px solid white",
+    borderRadius: "50%",
+    height: props.enlarged ? 20 : 10,
+    width: props.enlarged ? 20 : 10,
+    backgroundColor: show ? "red" : "blue",
+    cursor: "pointer",
     zIndex: 10,
   };
 
@@ -23,5 +23,4 @@ const Marker = (props) => {
   );
 };
 
-
-  export default Marker; 
+export default Marker;

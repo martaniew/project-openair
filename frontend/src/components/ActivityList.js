@@ -11,18 +11,13 @@ import {
 } from '../actions/activityActions'
 import ActivityList from '../components/ActivityList'
 
-const Activities = ({activities}) => {
+//List activities in form of table
 
-    const activityDelete = useSelector((state) => state.activityDelete)
-  const {
-    loading: loadingDelete,
-    error: errorDelete,
-    success: successDelete,
-  } = activityDelete
+const ActivityList = ({activities}) => {
 
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you sure')) {
+    if (window.confirm('Vous êtes sur')) {
       dispatch(deleteActivity(id))
     }
   }

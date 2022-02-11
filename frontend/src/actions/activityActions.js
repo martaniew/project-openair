@@ -33,6 +33,8 @@ export const listActivities = (searchParams={}, pageNumber = '') => async (
   try {
     dispatch({ type: ACTIVITY_LIST_REQUEST })
 
+    // in req.body we send search parameters and a number of search results page from witch reqest were send
+
     const { data } = await axios.get(
       `/api/activities`, {
         params: {

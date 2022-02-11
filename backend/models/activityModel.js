@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const reviewSchema = mongoose.Schema(
   {
@@ -8,22 +8,22 @@ const reviewSchema = mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'User',
+      ref: "User",
     },
   },
   {
     timestamps: true,
   }
-)
+);
 
 const activitySchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'User',
+      ref: "User",
     },
-    discipline : {
+    discipline: {
       type: String,
       required: true,
     },
@@ -41,7 +41,7 @@ const activitySchema = mongoose.Schema(
     },
     location: {
       lat: { type: Number, required: true },
-      lng: { type: Number, required: true }
+      lng: { type: Number, required: true },
     },
     difficulty: {
       type: String,
@@ -66,8 +66,8 @@ const activitySchema = mongoose.Schema(
   {
     timestamps: true,
   }
-)
+);
 
-const Activity = mongoose.model('Activity', activitySchema)
+const Activity = mongoose.model("Activity", activitySchema);
 
-export default Activity
+export default Activity;

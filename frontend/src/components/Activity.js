@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import Rating from './Rating'
 
+//display single activity thumbnail
 const Activity = ({ activity }) => {
   return (
     <Card className='my-3 p-3 rounded'>

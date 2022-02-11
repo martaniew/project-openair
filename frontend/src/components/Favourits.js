@@ -1,84 +1,63 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserDetails } from "../actions/userActions";
 
+import { addToFavourite } from "../actions/userActions";
 
-
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getUserDetails} from '../actions/userActions'
-
-import {addToFavourite}  from '../actions/userActions'
+// add to favourite functionality
 
 const Favourits = ({ activityId }) => {
-
-    const dispatch = useDispatch()
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
-    
-   
-  const userDetails = useSelector((state) => state.userDetails)
-  const { loading, error, user } = userDetails
-    
-  const userFavourites = useSelector((state) => state.userFavourites)
-    const {
-    success: successAddToFavourite,
-  } = userFavourites
-   
-  const [isFavourite, setIsFavourite] = useState(false)
-
-    useEffect(() => {
-
-      if(userInfo) {dispatch(getUserDetails(userInfo._id))}
-    
-    }, [userInfo, dispatch, successAddToFavourite])
-
-    useEffect(()=> {
-      if(user.favs) {
-
-        if(user.favs.includes(activityId))
-        {setIsFavourite(true); 
-        }
-        else{
-          setIsFavourite(false)
-        }}
-    
-    }, [user])
-
-    console.log(user);
-    console.log(isFavourite); 
-
-    
   
+  const dispatch = useDispatch();
 
-   
-  
-   
+// getting information about user from strore 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
 
-    
-    
-  
+// getting information about adding activity to favorits  
+  const userFavourites = useSelector((state) => state.userFavourites);
+  const { success: successAddToFavourite } = userFavourites;
 
-     
+// state variable   
+  const [isFavourite, setIsFavourite] = useState(false);
 
-      const addRemoveFavouritsHandler = () => {
-        dispatch(
-          addToFavourite(activityId))
+// if adding to favourits succeed get information about user
+  useEffect(() => {
+    if (userInfo) {
+      dispatch(getUserDetails(userInfo._id));
+    }
+  }, [userInfo, dispatch, successAddToFavourite]);
+
+  // if user object will change check if activity belongs to favourits
+  useEffect(() => {
+    if (user.favs) {
+      if (user.favs.includes(activityId)) {
+        setIsFavourite(true);
+      } else {
+        setIsFavourite(false);
       }
- 
- 
- 
-    return (
-        <i
-        className='favourits'
-          onClick={addRemoveFavouritsHandler}
-          style={{ color: isFavourite ? 'red' : 'grey' }}
-          className={
-            'fas fa-star'
-          }
-        ></i>
-  )
-}
+    }
+  }, [user]);
+
+// Event handler add or remove from favourits 
+  const addRemoveFavouritsHandler = () => {
+    dispatch(addToFavourite(activityId));
+  };
+
+  return (
+    <i
+      className="favourits"
+      onClick={addRemoveFavouritsHandler}
+      style={{ color: isFavourite ? "red" : "grey" }}
+      className={"fas fa-star"}
+    ></i>
+  );
+};
 
 Favourits.defaultProps = {
-  color: '#f8e825',
-}
+  color: "#f8e825",
+};
 
-export default Favourits
+export default Favourits;

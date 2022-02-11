@@ -1,5 +1,7 @@
 import React from 'react'
 
+// dropdownlist to rate activity 
+
 const Rating = ({ value, text, color }) => {
   return (
     <div className='rating'>
