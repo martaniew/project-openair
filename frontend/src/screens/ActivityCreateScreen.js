@@ -127,13 +127,11 @@ const ActivityCreateScreen = ({ location, history, match }) => {
       valid = false;
     }
 
-    // On vide l'erreur de formulaire
-    ("");
+    setFormError("");
 
     if (valid === true) {
       setStep(SENDING_STEPS.SEND_DATA);
     } else {
-      // On retourne à l'étape NONE
       setStep(SENDING_STEPS.NONE);
     }
   }, [step]);

@@ -102,8 +102,6 @@ const ActivityListScreen = ({ location, history, match }) => {
       </Row>
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
-      {loadingCreate && <Loader />}
-      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
       {loading || loadingActivities ? (
         <Loader />
       ) : error || errorActivities ? (
