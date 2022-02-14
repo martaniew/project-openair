@@ -376,7 +376,9 @@ z-index: 0;
   display: flex;
   justify-content: center;
 }
-
+.activityimage {
+  margin-top: 10%;
+}
 
 }
 

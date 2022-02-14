@@ -51,7 +51,7 @@ const Favourits = ({ activityId }) => {
       className="favourits"
       onClick={addRemoveFavouritsHandler}
       style={{ color: isFavourite ? "red" : "grey" }}
-      className={"fa-solid fa-heart"}
+      className={"fas fa-heart"}
     ></i>
   );
 };
