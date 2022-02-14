@@ -170,7 +170,6 @@ export const updateActivity = (activityId, discipline, adress, image, descriptio
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
       },
     }
 
@@ -216,7 +215,6 @@ export const createActivityReview = (activityId, review) => async (
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
       },
     }
 
