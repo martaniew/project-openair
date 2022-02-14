@@ -40,6 +40,7 @@ const RegisterScreen = ({ location, history }) => {
 
   return (
     <Container style={{ width: "25rem" }}>
+        <h1>Créez un compte</h1>
       <Formik
         onSubmit={(values) => {
           dispatch(register(values.name, values.email, values.password));

@@ -112,10 +112,10 @@ const ActivityListScreen = ({ location, history, match }) => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>DISCIPLINE</th>
-                <th>ADDRESS</th>
-                <th>CONTACT</th>
-                <th>DIFFICULTIE</th>
+                <th>Type d'activité</th>
+                <th>Adresse</th>
+                <th>Contact</th>
+                <th>Niveau de difficulté </th>
                 <th></th>
               </tr>
             </thead>
@@ -127,7 +127,7 @@ const ActivityListScreen = ({ location, history, match }) => {
                     <td>{activity.discipline}</td>
                     <td>{activity.adress}</td>
                     <td>{activity.contact}</td>
-                    <td>{activity.difficultie}</td>
+                    <td>{activity.difficulty}</td>
                     <td>
                       <LinkContainer
                         to={`/admin/activity/${activity._id}/edit`}

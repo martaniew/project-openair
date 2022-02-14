@@ -8,19 +8,13 @@ import { getUserDetails, updateUserProfile} from '../actions/userActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
 const SENDING_STEPS = {
-  /**
-   * Correspond à l'état initial, pas d'enscription envoyéc
-   */
+  
   NONE: 'NONE',
 
-  /**
-   * On demande la validation des données
-   */
+  
   VALIDATION: 'VALIDATION',
 
-  /**
-   * On envoie les données à firebase
-   */
+  
   SEND_DATA: 'SEND_DATA',
 }
 
@@ -73,13 +67,12 @@ const ProfileScreen = ({ location, history }) => {
     }
   }, [dispatch, history, userInfo, user, success])
 
-// Effects
-  // Première effet, la validation des données
+
   useEffect(() => {
-    // Cette effet se déclenche uniquement lors de la step "VALIDATION"
+   
     if (step !== SENDING_STEPS.VALIDATION) return
 
-    // Validation de l'email
+   
     const validateEmail = () => {
       let valid = true
 
