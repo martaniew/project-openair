@@ -20,7 +20,7 @@ const Search = ({ history }) => {
         type="text"
         name="q"
         onChange={(e) => setAdress(e.target.value)}
-        placeholder="Search Activities..wxjckwxjhckwxjhckwjhckwxjch."
+        placeholder="Saisir un lieu, une adresse, un code postal, une ville...."
       />
 
       <div className="vl"></div>
@@ -30,11 +30,11 @@ const Search = ({ history }) => {
         type="text"
         name="q"
         onChange={(e) => setDiscipline(e.target.value)}
-        placeholder="Search Activities..,nwxb,wbc,wnbxc,wnbxcn,."
+        placeholder="Saisir une discipline, une activité extérieure..."
       />
 
       <button type="submit" className="searchbutton">
-        search
+        Rechercher
       </button>
     </form>
   );

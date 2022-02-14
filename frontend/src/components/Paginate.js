@@ -3,7 +3,8 @@ import { Pagination } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 const Paginate = ({ pages, page, isAdmin = false}) => {
-  console.log("paginate"); 
+  // return only if there is more than one pages os search results 
+  //create array of keys for every page of search results and map it to create link to the page of search results 
   return (
     pages > 1 && (
       <Pagination>

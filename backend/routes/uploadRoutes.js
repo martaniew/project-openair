@@ -3,6 +3,8 @@ import express from 'express'
 import multer from 'multer'
 const router = express.Router()
 
+
+// definition place where image are stored and with what name
 const storage = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, 'uploads/')
@@ -15,6 +17,7 @@ const storage = multer.diskStorage({
   },
 })
 
+// function checking file extenstion with regex expression
 function checkFileType(file, cb) {
   const filetypes = /jpg|jpeg|png/
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
@@ -27,6 +30,7 @@ function checkFileType(file, cb) {
   }
 }
 
+// verifivation of file type 
 const upload = multer({
   storage,
   fileFilter: function (req, file, cb) {
@@ -34,6 +38,7 @@ const upload = multer({
   },
 })
 
+// route definition with path to file in response object
 router.post('/', upload.single('image'), (req, res) => {
   res.send(`/${req.file.path}`)
 })

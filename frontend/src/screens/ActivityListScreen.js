@@ -125,7 +125,7 @@ const ActivityListScreen = ({ location, history, match }) => {
                   <tr key={activity._id}>
                     <td>{activity._id}</td>
                     <td>{activity.discipline}</td>
-                    <td>${activity.adress}</td>
+                    <td>{activity.adress}</td>
                     <td>{activity.contact}</td>
                     <td>{activity.difficultie}</td>
                     <td>

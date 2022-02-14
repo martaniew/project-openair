@@ -6,18 +6,18 @@ import getCoordsForAddress from "../utils/location.js";
 // @route   GET /api/activities
 // @access  Public
 const getActivities = asyncHandler(async (req, res) => {
-  // defining max activities per page 
+  // defining max activities per page
   const pageSize = 10;
 
   //number of page from which request was send
   const page = Number(req.query.pageNumber) || 1;
 
- // object with searching parameters 
+  // object with searching parameters
   let searchedPhrases = JSON.parse(req.query.searchParams);
   console.log(searchedPhrases);
 
   let keywords = {};
-// if request contient searched phrase we add it to object with MongoDb regular expression, i to ignore capital letters 
+  // if request contient searched phrase we add it to object with MongoDb regular expression, i to ignore capital letters
   if (Object.keys(searchedPhrases).length === 0) {
     keywords = {};
   } else {
@@ -26,16 +26,16 @@ const getActivities = asyncHandler(async (req, res) => {
       keywords[key] = { $regex: searchedPhrase, $options: "i" };
     }
   }
-  
-  // number of founded documents 
+
+  // number of founded documents
   const count = await Activity.countDocuments(keywords);
-  
-  //Get activities number of activities according to max activity per page, skipping already downloded 
+
+  //Get activities number of activities according to max activity per page, skipping already downloded
   const activities = await Activity.find(keywords)
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
-  //sending response with activities, max activities per page, and total number of pages 
+  //sending response with activities, max activities per page, and total number of pages
   res.json({ activities, page, pages: Math.ceil(count / pageSize) });
 });
 
