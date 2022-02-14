@@ -89,27 +89,27 @@ const LoginScreen = ({ location, history }) => {
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <FormContainer>
-        <h1>Sign In</h1>
+        <h1>Se connecter</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="email">
-            <Form.Label>Email Address</Form.Label>
+            <Form.Label>Address Email</Form.Label>
             {!!email.error && <Message variant="danger">{email.error}</Message>}
             <Form.Control
               type="email"
-              placeholder="Enter email"
+              placeholder="Saisissez votre e-mail"
               value={email.value}
               onChange={changeField(setEmail)}
             ></Form.Control>
           </Form.Group>
 
           <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Mot de passe</Form.Label>
             {!!password.error && (
               <Message variant="danger">{password.error}</Message>
             )}
             <Form.Control
               type="password"
-              placeholder="Enter password"
+              placeholder="Saisissez votre mot de passe"
               value={password.value}
               onChange={changeField(setPassword)}
             ></Form.Control>
@@ -121,7 +121,7 @@ const LoginScreen = ({ location, history }) => {
               setStep(SENDING_STEPS.VALIDATION);
             }}
           >
-            Create
+            Connectez vous
           </Button>
         </Form>
 

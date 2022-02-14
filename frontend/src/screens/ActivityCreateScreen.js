@@ -191,7 +191,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1>Ajouter une activité</h1>
       <Form>
         <Form.Group controlId="disipline">
           <Form.Label>Type d'activité</Form.Label>
@@ -279,7 +279,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
             setStep(SENDING_STEPS.VALIDATION);
           }}
         >
-          Create
+          Ajouter
         </Button>
       </Form>
     </FormContainer>
