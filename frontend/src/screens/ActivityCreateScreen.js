@@ -179,7 +179,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
       };
 
       const { data } = await axios.post("/api/upload", formData, config);
-      
+
       //set path to the image sent by server 
       setImage(data);
       setUploading(false);
@@ -194,7 +194,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
       <h1>Sign In</h1>
       <Form>
         <Form.Group controlId="disipline">
-          <Form.Label>Discipline</Form.Label>
+          <Form.Label>Type d'activité</Form.Label>
           {!!discipline.error && (
             <Message variant="danger">{discipline.error}</Message>
           )}
@@ -231,7 +231,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
 
         <Form.Group controlId="adress">
           {!!adress.error && <Message variant="danger">{adress.error}</Message>}
-          <Form.Label>Adress</Form.Label>
+          <Form.Label>Adresse</Form.Label>
           <Form.Control
             type="text"
             name="adress"
@@ -243,7 +243,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
           {!!difficulty.error && (
             <Message variant="danger">{difficulty.error}</Message>
           )}
-          <Form.Label>Difficulty</Form.Label>
+          <Form.Label>Niveau de difficulté</Form.Label>
           <Form.Control
             as="select"
             value={difficulty.value}
@@ -260,7 +260,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
           <Form.Label>Image</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter image url"
+            placeholder="Image"
             value={image}
             onChange={ImageChangeHandler}
           ></Form.Control>

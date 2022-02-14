@@ -67,9 +67,7 @@ const ActivityScreen = ({ history, match }) => {
   console.log(activity); 
 
   
-  // changement de route
   
-
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
@@ -80,12 +78,7 @@ const ActivityScreen = ({ history, match }) => {
     )
   }
 
-  //const addToFavouriteHandler = (e) => {
-  //  dispatch(
-  //    addFavourites(match.params.id, )
-
- //   )
- // }
+  
 
   return (
     <>
@@ -134,10 +127,10 @@ const ActivityScreen = ({ history, match }) => {
 
 
             <Card border="secondary" style={{ width: '18rem' , marginLeft: 'auto',  marginRight: 'auto' }} className='fixed rounded'>
-            <Card.Header>Contact Autor</Card.Header>
+            <Card.Header>Contacter l'auter</Card.Header>
             <Card.Body>
             {activity.user && (  
-            <Card.Title> Contact avec autor {activity.user.name} pour faire activity ensemble</Card.Title>)}
+            <Card.Title> Contacter {activity.user.name} pour faire activité ensemble</Card.Title>)}
             {!contactClicked
                ? <Button variant="primary" onClick={() => setContactClicked(true)}>Contact</Button>
                : <Card.Text>{activity.contact}</Card.Text>}
@@ -152,7 +145,7 @@ const ActivityScreen = ({ history, match }) => {
             {activity && (
               <ListGroup variant='flush'>
                 <ListGroup.Item>
-                  <h3>À propos d'activity</h3>
+                  <h3>A propos de l'activité</h3>
                 </ListGroup.Item>
                 
       
@@ -164,13 +157,13 @@ const ActivityScreen = ({ history, match }) => {
                   />
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Add to favourits: <Favourits activityId={activity._id}/>
+                Ajouter aux favoris: <Favourits activityId={activity._id}/>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Discipline: {activity.discipline}
+                Type d'activité: {activity.discipline}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                 Address: {activity.adress}
+                 Adresse : {activity.adress}
                  </ListGroup.Item>
                 <ListGroup.Item>
                  {activity.description}
@@ -184,7 +177,7 @@ const ActivityScreen = ({ history, match }) => {
             <Col md={6}>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-              <h2>Reviews</h2>
+              <h2>Avis</h2>
               </ListGroup.Item>
               {activity.reviews.length === 0 && <Message>No Reviews</Message>}
               
@@ -197,7 +190,7 @@ const ActivityScreen = ({ history, match }) => {
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
+                  <h2>Rédiger un avis </h2>
                   {successActivityReview && (
                     <Message variant='success'>
                       Review submitted successfully
@@ -225,7 +218,7 @@ const ActivityScreen = ({ history, match }) => {
                         </Form.Control>
                       </Form.Group>
                       <Form.Group controlId='comment'>
-                        <Form.Label>Comment</Form.Label>
+                        <Form.Label>Commentaires</Form.Label>
                         <Form.Control
                           as='textarea'
                           row='3'

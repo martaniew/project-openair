@@ -20,7 +20,7 @@ const Search = ({ history }) => {
         type="text"
         name="q"
         onChange={(e) => setAdress(e.target.value)}
-        placeholder="Saisir un lieu, une adresse, un code postal, une ville...."
+        placeholder="Saisir un lieu, un code postal, une ville...."
       />
 
       <div className="vl"></div>
