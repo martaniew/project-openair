@@ -48,7 +48,7 @@ app.use(
       "script-src": [ "'self'", "'sha256-1kri9uKG6Gd9VbixGzyFE/kaQIHihYFdxFKKhgz3b80='",  'https://apis.google.com', 'https://maps.googleapis.com', 'https://unpkg.com', 'https://cdnjs.cloudflare.com/'],
       "object-src": ["'none'"],
       "font-src" : ["'self'", 'https://cdnjs.cloudflare.com/'], 
-      "style-src" : [ "'self'"],
+      "style-src" : [ "'self'", 'https://cdnjs.cloudflare.com', 'https://maps.googleapis.com/' ],
     },
   })
 );
