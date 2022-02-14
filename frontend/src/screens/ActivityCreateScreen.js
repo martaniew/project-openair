@@ -83,7 +83,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
     if (!discipline.value) {
       setDiscipline({
         value: discipline.value,
-        error: "Vous devez renseigner discipline",
+        error: "Vous devez renseigner Type d'activité ",
       });
       valid = false;
     }
@@ -108,7 +108,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
     if (!adress.value) {
       setAdress({
         value: adress.value,
-        error: "Vous devez renseigner adress",
+        error: "Vous devez renseigner adresse",
       });
 
       valid = false;
@@ -117,7 +117,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
     if (!difficulty.value || difficulty.value === "") {
       setDifficulty({
         value: difficulty.value,
-        error: "Vous devez renseigner difficulty",
+        error: "Vous devez choisir niveau de difficulté ",
       });
       valid = false;
     }

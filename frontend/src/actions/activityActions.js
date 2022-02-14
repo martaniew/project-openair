@@ -94,13 +94,9 @@ export const deleteActivity = (id) => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState()
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
+    
 
-    await axios.delete(`/api/activities/${id}`, config)
+    await axios.delete(`/api/activities/${id}`)
 
     dispatch({
       type: ACTIVITY_DELETE_SUCCESS,
