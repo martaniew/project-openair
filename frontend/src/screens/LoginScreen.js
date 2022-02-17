@@ -38,14 +38,14 @@ const LoginScreen = ({ location, history }) => {
     if (!email.value) {
       setEmail({
         value: email.value,
-        error: "Vous devez renseigner email",
+        error: "Vous devez saisir votre email",
       });
       valid = false;
     }
     if (!password.value) {
       setPassword({
         value: password.value,
-        error: "Vous devez renseigner password",
+        error: "Vous devez saisir votre mot de passe",
       });
 
       valid = false;
@@ -92,11 +92,11 @@ const LoginScreen = ({ location, history }) => {
         <h1>Se connecter</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="email">
-            <Form.Label>Address Email</Form.Label>
+            <Form.Label>Addresse Email</Form.Label>
             {!!email.error && <Message variant="danger">{email.error}</Message>}
             <Form.Control
               type="email"
-              placeholder="Saisissez votre e-mail"
+              placeholder="Saisissez votre adresse email"
               value={email.value}
               onChange={changeField(setEmail)}
             ></Form.Control>

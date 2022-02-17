@@ -106,7 +106,7 @@ export const deleteActivity = (id) => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message
-    if (message === 'Not authorized, token failed') {
+    if (message === 'Veuillez vous connecter pour accéder à cette page') {
       dispatch(logout())
     }
     dispatch({
@@ -146,7 +146,7 @@ export const createActivity = (discipline, adress, image, description, difficult
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message
-    if (message === 'Not authorized, token failed') {
+    if (message === 'Veuillez vous connecter pour accéder à cette page') {
       dispatch(logout())
     }
     dispatch({
@@ -189,7 +189,7 @@ export const updateActivity = (activityId, discipline, adress, image, descriptio
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message
-    if (message === 'Not authorized, token failed') {
+    if (message === 'Veuillez vous connecter pour accéder à cette page') {
       dispatch(logout())
     }
     dispatch({
@@ -218,7 +218,6 @@ export const createActivityReview = (activityId, review) => async (
       },
     }
 
-    console.log(config); 
 
     await axios.post(`/api/activities/${activityId}/reviews`, review, config)
 
@@ -230,7 +229,7 @@ export const createActivityReview = (activityId, review) => async (
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message
-    if (message === 'Not authorized, token failed') {
+    if (message === 'Veuillez vous connecter pour accéder à cette page') {
       dispatch(logout())
     }
     dispatch({
@@ -285,7 +284,7 @@ export const listMyActivities = () => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message
-    if (message === 'Login first to access this resource.') {
+    if (message === 'Veuillez vous connecter pour accéder à cette page') {
       dispatch(logout())
     }
     dispatch({

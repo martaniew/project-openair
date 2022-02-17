@@ -199,7 +199,7 @@ const ActivityEditScreen = ({ match, history }) => {
         Go Back
       </Link>
       <FormContainer>
-        <h1>Edit Activity</h1>
+        <h1>Mettre à jour activité</h1>
         {loadingUpdate && <Loader />}
         {loading ? (
           <Loader />
@@ -208,7 +208,7 @@ const ActivityEditScreen = ({ match, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="disipline">
-              <Form.Label>Discipline</Form.Label>
+              <Form.Label>Type d'activité</Form.Label>
               {!!discipline.error && (
                 <Message variant="danger">{discipline.error}</Message>
               )}
@@ -248,7 +248,7 @@ const ActivityEditScreen = ({ match, history }) => {
               {!!adress.error && (
                 <Message variant="danger">{adress.error}</Message>
               )}
-              <Form.Label>Adress</Form.Label>
+              <Form.Label>Adresse</Form.Label>
               <Form.Control
                 type="text"
                 name="adress"
@@ -261,7 +261,7 @@ const ActivityEditScreen = ({ match, history }) => {
               {!!difficulty.error && (
                 <Message variant="danger">{difficulty.error}</Message>
               )}
-              <Form.Label>Difficulty</Form.Label>
+              <Form.Label>Niveau de difficulté</Form.Label>
               <Form.Control
                 as="select"
                 value={difficulty.value}

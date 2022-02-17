@@ -63,6 +63,5 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(...middleware))
 )
 
-console.log(localStorage); 
 
 export default store

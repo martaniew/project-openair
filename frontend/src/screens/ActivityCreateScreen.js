@@ -249,15 +249,15 @@ const ActivityCreateScreen = ({ location, history, match }) => {
             value={difficulty.value}
             onChange={changeField(setDifficulty)}
           >
-            <option value="">Select...</option>
-            <option value="begginer">1 - Begginer</option>
-            <option value="intermediete">2 - Intermediete</option>
-            <option value="proffesionel">3 - Proffesionel</option>
+            <option value="">choisir...</option>
+            <option value="begginer">1 - Débutant</option>
+            <option value="intermediete">2 - Avancé</option>
+            <option value="proffesionel">3 - Professionnel</option>
           </Form.Control>
         </Form.Group>
         <Form.Group controlId="image">
           {!!imageError && <Message variant="danger">{imageError}</Message>}
-          <Form.Label>Image</Form.Label>
+          <Form.Label>Photo</Form.Label>
           <Form.Control
             type="text"
             placeholder="Image"
@@ -266,7 +266,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
           ></Form.Control>
           <Form.File
             id="image-file"
-            label="Choose File"
+            label="Sélectionner un fichier"
             custom
             onChange={uploadFileHandler}
           ></Form.File>

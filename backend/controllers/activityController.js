@@ -14,7 +14,6 @@ const getActivities = asyncHandler(async (req, res) => {
 
   // object with searching parameters
   let searchedPhrases = JSON.parse(req.query.searchParams);
-  console.log(searchedPhrases);
 
   let keywords = {};
   // if request contient searched phrase we add it to object with MongoDb regular expression, i to ignore capital letters
@@ -49,7 +48,7 @@ const getActivityById = asyncHandler(async (req, res) => {
     res.json(activity);
   } else {
     res.status(404);
-    throw new Error("Activity not found");
+    throw new Error("Activité non disponible");
   }
 });
 
@@ -61,10 +60,10 @@ const deleteActivity = asyncHandler(async (req, res) => {
 
   if (activity) {
     await activity.remove();
-    res.json({ message: "Activity removed" });
+    res.json({ message: "Activité supprimée" });
   } else {
     res.status(404);
-    throw new Error("Activity not found");
+    throw new Error("Activité non trouvée");
   }
 });
 
@@ -81,10 +80,8 @@ const createActivity = asyncHandler(async (req, res) => {
     coordinates = await getCoordsForAddress(adress);
   } catch (error) {
     res.status(400);
-    throw new Error("Impossible to find coordinates for this adress");
+    throw new Error("Lieu non localisé, verifiez l'adresse saisie");
   }
-
-  console.log(coordinates);
 
   const activity = new Activity({
     user: req.user._id,
@@ -113,14 +110,13 @@ const updateActivity = asyncHandler(async (req, res) => {
     coordinates = await getCoordsForAddress(adress);
   } catch (error) {
     res.status(400);
-    throw new Error("Impossible to find coordinates for this adress");
+    throw new Error("Lieu non localisé, verifiez l'adresse saisie");
   }
 
   console.log(coordinates);
 
   const activity = await Activity.findById(req.params.id);
 
-  console.log(activity);
 
   if (activity) {
     activity.discipline = discipline;
@@ -137,7 +133,7 @@ const updateActivity = asyncHandler(async (req, res) => {
     console.log(updatedActivity);
   } else {
     res.status(404);
-    throw new Error("Activity not found");
+    throw new Error("Activité non trouvée");
   }
 });
 
@@ -156,7 +152,7 @@ const createActivityReview = asyncHandler(async (req, res) => {
 
     if (alreadyReviewed) {
       res.status(400);
-      throw new Error("Activity already reviewed");
+      throw new Error("Vous avez dèjà donné une note à cette activité ");
     }
 
     const review = {
@@ -175,10 +171,10 @@ const createActivityReview = asyncHandler(async (req, res) => {
       activity.reviews.length;
 
     await activity.save();
-    res.status(201).json({ message: "Review added" });
+    res.status(201).json({ message: "Votre notation a été prise en compte" });
   } else {
     res.status(404);
-    throw new Error("Activity not found");
+    throw new Error("Activité non trouvée");
   }
 });
 
@@ -195,11 +191,9 @@ const getTopActivities = asyncHandler(async (req, res) => {
 // @route   GET /api/activities/myactivities
 // @access  Private
 const getMyActivities = asyncHandler(async (req, res) => {
-  console.log("kuku");
+  
   const activities = await Activity.find({ user: req.params.id });
-  console.log(activities);
-
-  console.log(req.params.id);
+ 
   res.json(activities);
 });
 

@@ -280,7 +280,6 @@ export const addToFavourite = (activityId) => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState()
 
-    console.log(userInfo); 
 
     const config = {
       headers: {
@@ -288,9 +287,6 @@ export const addToFavourite = (activityId) => async (dispatch, getState) => {
       },
     }
     
-  
-    console.log(config); 
-    console.log(activityId); 
 
     
 

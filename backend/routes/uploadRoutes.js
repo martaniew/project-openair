@@ -26,7 +26,7 @@ function checkFileType(file, cb) {
   if (extname && mimetype) {
     return cb(null, true)
   } else {
-    cb('Images only!')
+    cb('seuls les fichiers jpg, jpeg et png sont authorisés')
   }
 }
 

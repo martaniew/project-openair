@@ -38,7 +38,7 @@ const authUser = asyncHandler(async (req, res) => {
     sendToken(user, 201, req, res);
   } else {
     res.status(401);
-    throw new Error("Invalid email or password");
+    throw new Error("adresse email ou mot de passe érroné");
   }
 });
 
@@ -52,7 +52,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (userExists) {
     res.status(400);
-    throw new Error("User already exists");
+    throw new Error("Un utlisateur est déjà enregistré avec cet email");
   }
 
   const user = await User.create({
@@ -65,7 +65,7 @@ const registerUser = asyncHandler(async (req, res) => {
     sendToken(user, 201, req, res);
   } else {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new Error("données saisies érronées ");
   }
 });
 
@@ -84,7 +84,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Utlisateur non trouvé");
   }
 });
 
@@ -112,7 +112,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Utlisateur non trouvé");
   }
 });
 
@@ -129,21 +129,18 @@ const getUsers = asyncHandler(async (req, res) => {
 // @access  Private
 const addFavourites = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
-
   if (user) {
     if (user.favs.includes(req.body.activityId)) {
       user.favs.splice(user.favs.indexOf(req.body.activityId), 1);
-      console.log(user.favs.indexOf(req.body.activityId));
-      console.log(user.favs);
+     
     } else {
       user.favs.push(req.body.activityId);
     }
     const updatedUser = await user.save();
     res.json(updatedUser);
-    console.log(updatedUser);
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Utlisateur non trouvé");
   }
 });
 
@@ -155,10 +152,10 @@ const deleteUser = asyncHandler(async (req, res) => {
 
   if (user) {
     await user.remove();
-    res.json({ message: "User removed" });
+    res.json({ message: "Utilisateur supprimé" });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Utlisateur non trouvé");
   }
 });
 
@@ -172,7 +169,7 @@ const getUserById = asyncHandler(async (req, res) => {
     res.json(user);
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Utilisateur non trouvé");
   }
 });
 
@@ -197,7 +194,7 @@ const updateUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Utlisateur non trouvé");
   }
 });
 

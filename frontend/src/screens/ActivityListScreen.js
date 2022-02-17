@@ -20,11 +20,11 @@ const ActivityListScreen = ({ location, history, match }) => {
 
 // get number of actual page if search results from url
   const pageNumber = match.params.pageNumber || 1;
-  console.log(pageNumber);
+ 
 
 // get user type (admin or user) from url
   const user = new URLSearchParams(location.search).get("user");
-  console.log(user);
+
 
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ const ActivityListScreen = ({ location, history, match }) => {
   const { loading, error, activities, page, pages } = activityList;
 
   const activitiesListMy = useSelector((state) => state.activitiesListMy);
-  console.log(activitiesListMy);
+ 
   const {
     loading: loadingActivities,
     error: errorActivities,

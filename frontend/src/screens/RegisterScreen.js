@@ -11,17 +11,17 @@ import * as yup from "yup";
 
 const schema = yup.object().shape({
   name: yup.string().required("Vous devez renseigner un nom"),
-  email: yup.string().email().required(),
+  email: yup.string().email("Saisissez une adresse email au bon format").required("Vous devez renseigner un email"),
   password: yup
     .string()
     .required()
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      "Mot de passe doit comporter au moins 8 caractères, une majuscule et un caractère spécial'"
+      "Le mot de passe doit comporter au moins 8 caractères, une majuscule et un caractère spécial'"
     ),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .oneOf([yup.ref("password"), null], "Les deux mots de passe ne correspondent pas")
     .required(),
 });
 
@@ -83,7 +83,7 @@ const RegisterScreen = ({ location, history }) => {
               <Form.Label>email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Saisissez votre e-mail"
+                placeholder="Saisissez votre email"
                 name="email"
                 value={values.email}
                 onChange={handleChange}
@@ -112,10 +112,10 @@ const RegisterScreen = ({ location, history }) => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="validationFormik04">
-              <Form.Label>Confirmation defaultProps mot de passe</Form.Label>
+              <Form.Label>Confirmation de mot de passe</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Répétez le mot de passe"
+                placeholder="Resaisir le mot de passe"
                 name="confirmPassword"
                 value={values.confirmPassword}
                 onChange={handleChange}

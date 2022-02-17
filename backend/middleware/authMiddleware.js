@@ -10,7 +10,7 @@ const protect = asyncHandler(async (req, res, next) => {
   // checking if there is token
   if (!token) {
     res.status(401);
-    throw new Error("Login first to access this resource.");
+    throw new Error("Veuillez vous connecter pour accéder à cette page");
   }
   // verification token and checking if user with id sent with token exist
   try {
@@ -28,7 +28,7 @@ const admin = (req, res, next) => {
     next();
   } else {
     res.status(401);
-    throw new Error("Not authorized as an admin");
+    throw new Error("Vous n'avez pas les droits d'administrateur");
   }
 };
 

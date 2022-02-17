@@ -52,7 +52,7 @@ const ActivityScreen = ({ history, match }) => {
     error: errorActivityReview,
   } = activityReviewCreate;
 
-  console.log(activityDetails);
+
 
   useEffect(() => {
     if (activity.location != undefined) {
@@ -214,11 +214,11 @@ const ActivityScreen = ({ history, match }) => {
                           value={rating}
                           onChange={(e) => setRating(e.target.value)}
                         >
-                          <option value="">Select...</option>
-                          <option value="1">1 - Poor</option>
-                          <option value="2">2 - Fair</option>
-                          <option value="3">3 - Good</option>
-                          <option value="4">4 - Very Good</option>
+                          <option value="">Choisir</option>
+                          <option value="1">1 - Faible</option>
+                          <option value="2">2 - Moyen</option>
+                          <option value="3">3 - Bon</option>
+                          <option value="4">4 - Trés Bon</option>
                           <option value="5">5 - Excellent</option>
                         </Form.Control>
                       </Form.Group>
@@ -241,7 +241,7 @@ const ActivityScreen = ({ history, match }) => {
                     </Form>
                   ) : (
                     <Message>
-                      Please <Link to="/login">sign in</Link> to write a review{" "}
+                      Veuillez <Link to="/login">vous connecter</Link> pour donner votre avis{" "}
                     </Message>
                   )}
                 </ListGroup.Item>
