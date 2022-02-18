@@ -6,27 +6,27 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { register } from "../actions/userActions";
-import { Formik } from "formik";
-import * as yup from "yup";
 
-const schema = yup.object().shape({
-  name: yup.string().required("Vous devez renseigner un nom"),
-  email: yup.string().email("Saisissez une adresse email au bon format").required("Vous devez renseigner un email"),
-  password: yup
-    .string()
-    .required()
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      "Le mot de passe doit comporter au moins 8 caractères, une majuscule et un caractère spécial'"
-    ),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Les deux mots de passe ne correspondent pas")
-    .required(),
-});
+
+const SENDING_STEPS = {
+  NONE: "NONE",
+
+  VALIDATION: "VALIDATION",
+
+  SEND_DATA: "SEND_DATA",
+};
 
 const RegisterScreen = ({ location, history }) => {
-  const [validated, setValidated] = useState(false);
+  const [email, setEmail] = useState({ value: "", error: "" });
+  const [name, setName] = useState({ value: "", error: "" });
+  const [password, setPassword] = useState({ value: "", error: "" });
+  const [confirmPassword, setConfirmPassword] = useState({
+    value: "",
+    error: "",
+  });
+  const [formError, setFormError] = useState("");
+  const [step, setStep] = useState(SENDING_STEPS.NONE);
+
   const dispatch = useDispatch();
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
@@ -38,98 +38,174 @@ const RegisterScreen = ({ location, history }) => {
     }
   }, [history, userInfo, redirect]);
 
+  useEffect(() => {
+    if (step !== SENDING_STEPS.VALIDATION) return;
+    let valid = true;
+
+    if (!name.value) {
+      setName({
+        value: name.value,
+        error: "Vous devez saisir votre nom",
+      });
+      valid = false;
+    }
+
+    if (!email.value) {
+      setEmail({
+        value: email.value,
+        error: "Vous devez saisir votre email",
+      });
+      valid = false;
+    }
+
+    if (email.value) {
+      if (!/^[^@]+@[^.]+\.[a-zA-Z0-9]+/.test(email.value)) {
+        setEmail({
+          value: email.value,
+          error: "Vous devez saisir un email valide",
+        });
+
+        valid = false;
+      }
+
+    }
+
+    if (!password.value) {
+      setPassword({
+        value: password.value,
+        error: "Vous devez saisir votre mot de passe",
+      });
+
+      valid = false;
+    }
+
+  
+     
+    
+
+    if (!confirmPassword.value) {
+      setConfirmPassword({
+        value: confirmPassword.value,
+        error: "Vous devez confirmer un mot de passe",
+      });
+
+      valid = false;
+    }
+
+    if (password.value !== confirmPassword.value) {
+      setPassword({
+        value: password.value,
+        error: "Les deux mots de passe ne correspondent pas",
+      });
+
+      valid = false;
+    }
+
+    if (password.value && password.value === confirmPassword.value) {
+      if (
+        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
+          password.value
+        )
+      ) {
+        setPassword({
+          value: password.value,
+          error:
+            'Le champ "Mot de passe" doit comporter au moins 8 caractères, une majuscule et un caractère spécial (@$!%*?&).',
+        });
+
+        valid = false;
+      }
+    }
+
+    setFormError("");
+
+    if (valid === true) {
+      setStep(SENDING_STEPS.SEND_DATA);
+    } else {
+      setStep(SENDING_STEPS.NONE);
+    }
+  }, [step]);
+
+  useEffect(() => {
+    if (step !== SENDING_STEPS.SEND_DATA) return;
+    dispatch(register(name.value, email.value, password.value));
+  }, [step]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
+
+  const changeField = (setField) => (e) =>
+    setField({
+      error: "",
+      value: e.target.value,
+    });
+
   return (
-    <Container style={{ width: "25rem" }}>
+    <>
+      {error && <Message variant="danger">{error}</Message>}
+      {loading && <Loader />}
+      <FormContainer>
         <h1>Créez un compte</h1>
-      <Formik
-        onSubmit={(values) => {
-          dispatch(register(values.name, values.email, values.password));
-        }}
-        validationSchema={schema}
-        initialValues={{
-          name: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-        }}
-      >
-        {({
-          handleSubmit,
-          handleChange,
-          handleBlur,
-          values,
-          touched,
-          isValid,
-          errors,
-        }) => (
-          <Form noValidate onSubmit={handleSubmit}>
-            <Form.Group controlId="validationFormik01">
-              <Form.Label>nom</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Saisissez votre nom"
-                name="name"
-                value={values.name}
-                onChange={handleChange}
-                isValid={touched.name && !errors.name}
-                isInvalid={!!errors.name}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.name}
-              </Form.Control.Feedback>
-            </Form.Group>
+        <Form onSubmit={submitHandler}>
+          <Form.Group controlId="name">
+            <Form.Label>Nom</Form.Label>
+            {!!name.error && <Message variant="danger">{name.error}</Message>}
+            <Form.Control
+              type="text"
+              placeholder="Saisissez votre nom"
+              value={name.value}
+              onChange={changeField(setName)}
+            ></Form.Control>
+          </Form.Group>
+          <Form.Group controlId="email">
+            <Form.Label>Addresse Email</Form.Label>
+            {!!email.error && <Message variant="danger">{email.error}</Message>}
+            <Form.Control
+              type="email"
+              placeholder="Saisissez votre adresse email"
+              value={email.value}
+              onChange={changeField(setEmail)}
+            ></Form.Control>
+          </Form.Group>
 
-            <Form.Group controlId="validationFormik02">
-              <Form.Label>email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Saisissez votre email"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                isValid={touched.email && !errors.email}
-                isInvalid={!!errors.email}
-              />
+          <Form.Group controlId="password">
+            <Form.Label>Mot de passe</Form.Label>
+            {!!password.error && (
+              <Message variant="danger">{password.error}</Message>
+            )}
+            <Form.Control
+              type="password"
+              placeholder="Saisissez votre mot de passe"
+              value={password.value}
+              onChange={changeField(setPassword)}
+            ></Form.Control>
+          </Form.Group>
 
-              <Form.Control.Feedback type="invalid">
-                {errors.email}
-              </Form.Control.Feedback>
-            </Form.Group>
+          <Form.Group controlId="confirmPassword">
+            <Form.Label>Confirmation de mot de passe</Form.Label>
+            {!!confirmPassword.error && (
+              <Message variant="danger">{confirmPassword.error}</Message>
+            )}
+            <Form.Control
+              type="password"
+              placeholder="Confirmez votre mot de passe"
+              value={confirmPassword.value}
+              onChange={changeField(setConfirmPassword)}
+            ></Form.Control>
+          </Form.Group>
 
-            <Form.Group controlId="validationFormik03">
-              <Form.Label>Mot de passe</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Saisissez votre mot de passe"
-                name="password"
-                value={values.password}
-                onChange={handleChange}
-                isInvalid={!!errors.password}
-              />
-
-              <Form.Control.Feedback type="invalid">
-                {errors.password}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group controlId="validationFormik04">
-              <Form.Label>Confirmation de mot de passe</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Resaisir le mot de passe"
-                name="confirmPassword"
-                value={values.confirmPassword}
-                onChange={handleChange}
-                isInvalid={!!errors.confirmPassword}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.confirmPassword}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Button type="submit">Créez un compte</Button>
-          </Form>
-        )}
-      </Formik>
-    </Container>
+          <Button
+            variant="primary"
+            onClick={() => {
+              setStep(SENDING_STEPS.VALIDATION);
+            }}
+          >
+            Connectez vous
+          </Button>
+        </Form>
+      </FormContainer>
+    </>
   );
 };
 

@@ -195,9 +195,6 @@ const ActivityEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <Link to="/admin/activitylist" className="btn btn-light my-3">
-        Go Back
-      </Link>
       <FormContainer>
         <h1>Mettre à jour activité</h1>
         {loadingUpdate && <Loader />}
@@ -267,25 +264,25 @@ const ActivityEditScreen = ({ match, history }) => {
                 value={difficulty.value}
                 onChange={changeField(setDifficulty)}
               >
-                <option value="">Select...</option>
-                <option value="begginer">1 - Begginer</option>
-                <option value="intermediete">2 - Intermediete</option>
-                <option value="proffesionel">3 - Proffesionel</option>
+                <option value="">Choisir...</option>
+                <option value="begginer">1 - Débutant</option>
+                <option value="intermediete">2 - Avancé</option>
+                <option value="proffesionel">3 - Professionnel</option>
               </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="image">
               {!!imageError && <Message variant="danger">{imageError}</Message>}
-              <Form.Label>Image</Form.Label>
+              <Form.Label>Photo</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter image url"
+                placeholder="Image"
                 value={image}
                 onChange={ImageChangeHandler}
               ></Form.Control>
               <Form.File
                 id="image-file"
-                label="Choose File"
+                label="Sélectionner un fichier"
                 custom
                 onChange={uploadFileHandler}
               ></Form.File>
@@ -299,7 +296,7 @@ const ActivityEditScreen = ({ match, history }) => {
                 setStep(SENDING_STEPS.VALIDATION);
               }}
             >
-              Sign In
+              Mettre à jour
             </Button>
           </Form>
         )}

@@ -33,7 +33,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <LinkContainer to="/create">
-                <Nav.Link id="create">Ajouer une activité</Nav.Link>
+                <Nav.Link id="create">Ajouter une activité</Nav.Link>
               </LinkContainer>
               {userInfo ? (
                 <>

@@ -69,21 +69,21 @@ const ProfileScreen = ({ location, history }) => {
 
 
   useEffect(() => {
+
+    let valid = true
    
     if (step !== SENDING_STEPS.VALIDATION) return
 
-   
+    if (!name.value) {
+      setName({
+        value: name.value,
+        error: 'Vous devez renseigner un nom',
+      })
+
+      valid = false
+    }
     const validateEmail = () => {
-      let valid = true
-
-      if (!name.value) {
-        setName({
-          value: email.value,
-          error: 'Vous devez renseigner un nom',
-        })
-
-        valid = false
-      }
+     
 
       if (!email.value) {
         setEmail({
@@ -162,7 +162,7 @@ const ProfileScreen = ({ location, history }) => {
       }
   }, [step])
 
-  // Second effet, l'envoie des données à firebase
+  
   useEffect(() => {
     // On éxécute l'effet uniquement si l'étape est SEND_DATA
     if (step !== SENDING_STEPS.SEND_DATA) return
@@ -184,10 +184,10 @@ const ProfileScreen = ({ location, history }) => {
 
   return (
     <Container style={{ width: '25rem' }}>
-        <h2>User Profile</h2>
+        <h2>Mettre à jour Profil</h2>
         {message && <Message variant='danger'>{message}</Message>}
         {}
-        {success && <Message variant='success'>Profile Updated</Message>}
+        {success && <Message variant='success'>Mise à jour du profil réussie</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
@@ -195,56 +195,56 @@ const ProfileScreen = ({ location, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Nom</Form.Label>
               {!!name.error && (
           
           <Message  variant='danger'>{name.error}</Message>
         )}
               <Form.Control
                 type='name'
-                placeholder='Enter name'
+                placeholder='Saisissez votre nom'
                 value={name.value}
                 onChange={changeField(setName)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='email'>
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>Addresse email</Form.Label>
               {!!email.error && (
           
           <Message  variant='danger'>{email.error}</Message>
         )}
               <Form.Control
                 type='email'
-                placeholder='Enter email'
+                placeholder='Saisissez votre adresse email'
                 value={email.value}
                 onChange={changeField(setEmail)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='password'>
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Mot de passe</Form.Label>
               {!!password.error && (
           
           <Message  variant='danger'>{password.error}</Message>
         )}
               <Form.Control
                 type='password'
-                placeholder='Enter password'
+                placeholder='Saisissez votre mot de passe'
                 value={password.value}
                 onChange={changeField(setPassword)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='confirmPasswordd'>
-              <Form.Label>Confirm Password</Form.Label>
+              <Form.Label>Confirmation de mot de passe</Form.Label>
               {!!confirmPassword.error && (
           
           <Message  variant='danger'>{confirmPassword.error}</Message>
         )}
               <Form.Control
                 type='password'
-                placeholder='Confirm password'
+                placeholder='Confirmez votre mot de passe'
                 value={confirmPassword.value}
                 onChange={changeField(setConfirmPassword)}
               ></Form.Control>
@@ -253,7 +253,7 @@ const ProfileScreen = ({ location, history }) => {
             <Button onClick={() => {
         setStep(SENDING_STEPS.VALIDATION)
       }} variant='primary'>
-              Update
+              Mettre à jour
             </Button>
           </Form>
         )}

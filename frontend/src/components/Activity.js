@@ -14,18 +14,18 @@ const Activity = ({ activity }) => {
       <Card.Body>
         <Link to={`/activity/${activity._id}`}>
           <Card.Title as='div'>
-            <strong>{activity.discipline}</strong>
+            <h3>{activity.discipline}</h3>
           </Card.Title>
         </Link>
 
         <Card.Text as='div'>
           <Rating
             value={activity.rating}
-            text={`${activity.numReviews} reviews`}
+            text={`${activity.numReviews} avis`}
           />
         </Card.Text>
 
-        <Card.Text as='h3'>{activity.adress}</Card.Text>
+        <Card.Text>{activity.adress}</Card.Text>
       </Card.Body>
     </Card>
   )

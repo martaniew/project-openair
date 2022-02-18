@@ -86,12 +86,12 @@ const createActivity = asyncHandler(async (req, res) => {
   const activity = new Activity({
     user: req.user._id,
     discipline: discipline,
-    adress: adress,
+    adress: coordinates[1],
     image: image,
     description: description,
     difficulty: difficulty,
     contact: contact,
-    location: coordinates,
+    location: coordinates[0],
   });
 
   const createdActivity = await activity.save();
@@ -120,13 +120,13 @@ const updateActivity = asyncHandler(async (req, res) => {
 
   if (activity) {
     activity.discipline = discipline;
-    activity.adress = adress;
+    activity.adress = coordinates[1];
     activity.description = description;
     activity.image = image;
     activity.description = description;
     activity.difficulty = difficulty;
     activity.contact = contact;
-    activity.location = coordinates;
+    activity.location = coordinates[0];
 
     const updatedActivity = await activity.save();
     res.json(updatedActivity);

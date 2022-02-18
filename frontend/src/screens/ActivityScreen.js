@@ -198,7 +198,7 @@ const ActivityScreen = ({ history, match }) => {
                   <h2>Rédiger un avis </h2>
                   {successActivityReview && (
                     <Message variant="success">
-                      Review submitted successfully
+                      Avis ajouté avec succès
                     </Message>
                   )}
                   {loadingActivityReview && <Loader />}
@@ -236,7 +236,7 @@ const ActivityScreen = ({ history, match }) => {
                         type="submit"
                         variant="primary"
                       >
-                        Submit
+                        Envoyer
                       </Button>
                     </Form>
                   ) : (

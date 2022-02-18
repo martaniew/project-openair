@@ -249,7 +249,7 @@ const ActivityCreateScreen = ({ location, history, match }) => {
             value={difficulty.value}
             onChange={changeField(setDifficulty)}
           >
-            <option value="">choisir...</option>
+            <option value="">Choisir...</option>
             <option value="begginer">1 - Débutant</option>
             <option value="intermediete">2 - Avancé</option>
             <option value="proffesionel">3 - Professionnel</option>

@@ -10,7 +10,7 @@ async function getCoordsForAddress(address) {
   const response = await axios.get(
     `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
       address
-    )}&key=${API_KEY}`
+    )}&key=${API_KEY}&language=fr`
   );
 
   const data = response.data;
@@ -24,8 +24,9 @@ async function getCoordsForAddress(address) {
   }
 
   const coordinates = data.results[0].geometry.location;
-
-  return coordinates;
+  const formatted_address = data.results[0].formatted_address;
+  return [coordinates, formatted_address]; 
+  
 }
 
 export default getCoordsForAddress;
