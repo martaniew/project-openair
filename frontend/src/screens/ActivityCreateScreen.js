@@ -179,9 +179,10 @@ const ActivityCreateScreen = ({ location, history, match }) => {
       };
 
       const { data } = await axios.post("/api/upload", formData, config);
+     
 
-      //set path to the image sent by server 
-      setImage(data);
+    //set path to the image sent by server 
+     setImage(data);
       setUploading(false);
     } catch (error) {
       console.error(error);
