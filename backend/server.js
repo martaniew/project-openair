@@ -16,6 +16,7 @@ import userRoutes from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 
 
+
 dotenv.config()
 
 // connection to database 
@@ -35,23 +36,31 @@ app.options('*', cors());
 
 
 // Set security HTTP headers
-app.use(helmet()); 
+app.use(helmet({ crossOriginEmbedderPolicy: false, 
+                 crossOriginResourcePolicy: false, 
+})); 
 
 app.use(
   helmet
   .contentSecurityPolicy({
     directives: {
       "default-src": ["'self'"],
-      "connect-src": ["'self'", 'https://maps.googleapis.com' ],
-      "img-src": ["'self'", "data:", 'https://maps.gstatic.com', 'https://maps.googleapis.com/'],
+      "connect-src": ["'self'", 'https://maps.googleapis.com', 'https://openairimages.s3.amazonaws.com/' ],
+      "img-src": ["'self'", "data:", 'https://maps.gstatic.com', 'https://maps.googleapis.com/', 'https://openairimages.s3.eu-west-3.amazonaws.com', 'https://openairimages.s3.amazonaws.com'],
       "style-src-elem": ["'self'",  'https://fonts.googleapis.com', 'https://cdnjs.cloudflare.com/', 'https://maps.googleapis.com', "'sha256-mmA4m52ZWPKWAzDvKQbF7Qhx9VHCZ2pcEdC0f9Xn/Po='", "'sha256-/VVOq+Ws/EiUxf2CU6tsqsHdOWqBgHSgwBPqCTjYD3U='", "'sha256-lqO9GtizDrXbeRXIR3ynpmU+gCyvU40G2GmqvrAGxBk='", "'sha256-g9aHNH7iF2hhGZYtVVd5mKQSnyLPmXWw5gwiuxBVonI='", "'sha256-EmpgQBYw6JFHxarOZhE2iFtBzBewJeLNUVVHfvN3Obw='", "'sha256-6EhLFF8G95u/ybGSFfUDwCI+tUnGaFOU7YO6RWksdT8='"],
       "script-src": [ "'self'", "'sha256-1kri9uKG6Gd9VbixGzyFE/kaQIHihYFdxFKKhgz3b80='",  'https://apis.google.com', 'https://maps.googleapis.com', 'https://unpkg.com', 'https://cdnjs.cloudflare.com/'],
       "object-src": ["'none'"],
-      "font-src" : ["'self'", 'https://cdnjs.cloudflare.com/'], 
+      "font-src" : ["'self'", 'https://cdnjs.cloudflare.com/', 'https://fonts.gstatic.com'], 
       "style-src" : [ "'self'", 'https://cdnjs.cloudflare.com', 'https://maps.googleapis.com/', 'https://fonts.googleapis.com' ],
     },
   })
 );
+
+
+
+
+
+
 
 
 // Developement loging 

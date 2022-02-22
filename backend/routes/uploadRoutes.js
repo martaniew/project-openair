@@ -30,6 +30,7 @@ const upload = multer({
     acl: 'public-read',
     s3: s3,
     bucket: `openairimages`,
+
     metadata: function (req, file, cb) {
       cb(null, { fieldName: 'TESTING_METADATA' });
     },

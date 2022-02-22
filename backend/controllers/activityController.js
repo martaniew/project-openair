@@ -75,6 +75,8 @@ const createActivity = asyncHandler(async (req, res) => {
   const { discipline, adress, image, description, difficulty, contact } =
     req.body;
 
+    console.log(req.body)
+
   let coordinates;
   try {
     coordinates = await getCoordsForAddress(adress);
