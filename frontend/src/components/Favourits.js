@@ -32,6 +32,8 @@ const Favourits = ({ activityId }) => {
 
   // if user object will change check if activity belongs to favourits
   useEffect(() => {
+    if (!user) return;
+    
     if (user.favs) {
       if (user.favs.includes(activityId)) {
         setIsFavourite(true);

@@ -140,9 +140,9 @@ let searchParameters = {};
       ) : (
         <>
           {searchResultsMessage === true && (
-            <p className="text-center fixed">
+            <Message>
               Il n’y a pas de résultat qui correspond à vos critères de recherches. Veuillez modifier vos critères ou sélectionner une des activités les mieux notées.
-            </p>
+            </Message>
           )}
           <div className="searchresults">
             <Route render={({ history }) => <Search history={history} />} />
