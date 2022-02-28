@@ -4,7 +4,7 @@ export const defaultProps = {
       lng: 30.337844
     },
     zoom: 11, 
-    key: "AIzaSyA5HtsM-i9Oe_GT_Bp0M-YBy08PTkyJfi0"
+    key: "key=AIzaSyA5HtsM-i9Oe_GT_Bp0M-YBy08PTkyJfi0"
   };
 
   
