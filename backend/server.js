@@ -33,8 +33,6 @@ app.use(
 
 app.options('*', cors());
 
-// test
-
 // Set security HTTP headers
 // app.use(helmet({ crossOriginEmbedderPolicy: false,
 //                  crossOriginResourcePolicy: false,
