@@ -13,6 +13,8 @@ async function getCoordsForAddress(address) {
     )}&key=${API_KEY}&language=fr`
   );
 
+  console.log(response)
+
   const data = response.data;
 
   if (!data || data.status === 'ZERO_RESULTS') {
