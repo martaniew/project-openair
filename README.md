@@ -2,10 +2,9 @@
 
 > Application built with the MERN stack & Redux.
 
-
 ### Env Variables
 
-To run application create a .env file in then root and add the following
+To run application create a .env file in the root and add the following
 NODE_ENV = development
 PORT = 5000
 MONGO_URI = your mongodb uri
@@ -19,10 +18,10 @@ npm install
 
 ### Run
 
-# Run frontend (:3000) & backend (:5000)
+Run frontend (:3000) & backend (:5000)
 npm run dev
 
-# Run backend only
+Run backend only
 npm run server
 
 
