@@ -13,8 +13,6 @@ JWT_SECRET = create your Secret with at least 32 characters
 ### Install Dependencies (frontend & backend)
 
 npm install
-cd frontend
-npm install
 
 ### Run
 
